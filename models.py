@@ -6,7 +6,7 @@ class VeiculoModel (db.Model):
 	fabricante = db.StringProperty()
 	ano_fabricacao = db.StringProperty()
 	ano_modelo = db.StringProperty()
-	cor = db.DateProperty()
+	cor = db.StringProperty()
 	user_name = db.StringProperty()
 
 class CadastroModel (db.Model):
