@@ -6,7 +6,7 @@ import jinja2
 import os
 
 from datetime import datetime
-from logics import Veiculos
+from logics import Veiculo
 from google.appengine.ext import db
 from google.appengine.api import users
 
@@ -17,8 +17,8 @@ jinja_environment.globals['year'] = datetime.now().year
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        veic = Veiculos() 
-        template_values = {'veiculos' : veic.listar_veiculos()}
+        veic = Veiculo() 
+        template_values = {'veiculos' : veic.listar_veiculo()}
         template = jinja_environment.get_template('template/index.html')
         self.response.out.write(template.render(template_values))
     def post(self):
@@ -48,7 +48,7 @@ class CreateHandler(webapp2.RequestHandler):
         input_ano_modelo = self.request.get('ano_modelo').strip()
         input_cor = self.request.get('cor').strip()
         
-        veic = Veiculos()
+        veic = Veiculo()
         veic.salvar_veiculo(input_modelo,input_fabricante,input_ano_fabricacao,input_ano_modelo,input_cor,0)
         self.redirect('/create')
 
@@ -76,6 +76,6 @@ class EditHandler(webapp2.RequestHandler):
         input_ano_modelo = self.request.get('ano_modelo').strip()
         input_cor = self.request.get('cor').strip()
 
-        veic = Veiculos()
+        veic = Veiculo()
         veic.salvar_veiculo (input_modelo,input_fabricante,input_ano_fabricacao,input_ano_modelo,input_cor,long(input_id))
         self.redirect('/')

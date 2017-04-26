@@ -3,7 +3,7 @@ import datetime
 from google.appengine.ext import db
 from google.appengine.api import users
 
-class Veiculos(object):
+class Veiculo(object):
 	def salvar_veiculo (self,modelo,fabricante,ano_fabricacao,ano_modelo,cor,id):
 		if id>0:
 			veic_k = db.Key.from_path('CadastroModel','LFournier','VeiculoModel',long(id))
