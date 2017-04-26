@@ -18,7 +18,7 @@ jinja_environment.globals['year'] = datetime.now().year
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         veic = Veiculo() 
-        template_values = {'veiculos' : veic.listar_veiculo()}
+        template_values = {'veiculo' : veic.listar_veiculo()}
         template = jinja_environment.get_template('template/index.html')
         self.response.out.write(template.render(template_values))
     def post(self):
@@ -26,7 +26,7 @@ class MainHandler(webapp2.RequestHandler):
         if user:
             if self.request.POST.get('delete'): #if user clicks "Delete" button
                 veiculo_ids = self.request.get('veiculo_id',allow_multiple=True) #allow_multiple=True so that it reads multiple key into list.
-                veic = Veiculos()
+                veic = Veiculo()
                 veic.excluir_veiculo(veiculo_ids)
                 self.redirect('/')
         else:
