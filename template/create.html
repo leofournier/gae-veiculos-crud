@@ -1,0 +1,114 @@
+{% extends "template/base.html" %}
+{% block title %}Veículos - Novo{% endblock %}
+{% block content %}
+            <div class="page-header">
+                <h3>Cadastro de Veículos</h3>
+
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <a href="/" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-arrow-left"></span>  Voltar</a>
+                </div>
+                <div class="panel-body">
+                    <form id="employee-entry" class="form-horizontal" role="form" method="post" action="/create">
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label" for="">Modelo</label>
+                            <div class="col-lg-4">
+                                <input type="text" class="form-control" id="modelo" name="modelo" placeholder="Modelo" required autofocus />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label" for="">Fabricante</label>
+                            <div class="col-lg-4">
+                                <input type="text" class="form-control" id="fabricante" name="fabricante" placeholder="Fabricante" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label" for="">Ano Fabricação</label>
+                            <div class="col-lg-4">
+                                <select id="class" class="form-control" name="ano_fabricacao">
+                                    <option>2001</option>
+                                    <option>2002</option>
+                                    <option>2003</option>
+                                    <option>2004</option>
+                                    <option>2005</option>
+                                    <option>2006</option>
+                                    <option>2007</option>
+                                    <option>2008</option>
+                                    <option>2009</option>
+                                    <option>2010</option>
+                                    <option>2011</option>
+                                    <option>2012</option>
+                                    <option>2013</option>
+                                    <option>2014</option>
+                                    <option>2015</option>
+                                    <option>2016</option>
+                                    <option>2017</option>
+                                </select>
+                            </div>                    
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label" for="">Ano Modelo</label>
+                            <div class="col-lg-4">
+                                <select id="class" class="form-control" name="ano_modelo">
+                                    <option>2001</option>
+                                    <option>2002</option>
+                                    <option>2003</option>
+                                    <option>2004</option>
+                                    <option>2005</option>
+                                    <option>2006</option>
+                                    <option>2007</option>
+                                    <option>2008</option>
+                                    <option>2009</option>
+                                    <option>2010</option>
+                                    <option>2011</option>
+                                    <option>2012</option>
+                                    <option>2013</option>
+                                    <option>2014</option>
+                                    <option>2015</option>
+                                    <option>2016</option>
+                                    <option>2017</option>
+                                    <option>2018</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label" for="">Cor</label>
+                            <div class="col-lg-4">
+                                <input type="text" class="form-control" id="cor" name="cor" placeholder="Cor" required />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-lg-offset-2 col-lg-4">
+                                <button type="submit" class="btn btn-primary">Salvar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+{% endblock %}
+{% block footer_script %}
+    <script>
+        // jQuery plugin to prevent double submission of forms
+        jQuery.fn.preventDoubleSubmission = function () {
+            $(this).on('submit', function (e) {
+                var $form = $(this);
+
+                if ($form.data('submitted') === true) {
+                    // Previously submitted - don't submit again
+                    e.preventDefault();
+                } else {
+                    // Mark it so that the next submit can be ignored
+                    $form.data('submitted', true);
+                }
+            });
+
+            // Keep chainability
+            return this;
+        };
+
+        $('form').preventDoubleSubmission();
+    </script>
+{% endblock %}

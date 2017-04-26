@@ -1,0 +1,52 @@
+{% extends "template/base.html" %}
+{% block title %}List of Employee{% endblock %}
+{% block content %}
+            <div class="page-header">
+                <h3>Sistema de Veículos</h3>
+            </div>
+            <form id="employee-list" class="form-horizontal" role="form" method="post" action="/">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Registro de Veículos
+                    </div>
+                    <div class="panel-body">
+                        <a href="/create" class="btn btn-success">Novo</a>
+                        <input type="submit" class="btn btn-danger" name="delete" value="Excluir">
+                        <table class="table table-hover ">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th class="col-md-2">Modelo</th>
+                                    <th class="col-md-2">Fabricante</th>
+                                    <th class="col-md-2">Ano Fabricação</th>
+                                    <th class="col-md-2">Ano Modelo</th>
+                                    <th class="col-md-2">Cor</th>
+                                    <th class="col-md-1">Ação</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for veic in veiculo %}
+                                <tr>
+                                    <td><input type="checkbox" name="veiculo_id" value="{{veic.key().id()}}"></td>
+                                    <td>{{ veic.modelo }}</td>
+                                    <td>{{ veic.fabricante }}</td>
+                                    <td>{{ veic.ano_fabricacao }}</td>
+                                    <td>{{ veic.ano_modelo }}</td>
+                                    <td>{{ veic.cor }}</td>
+                                    <!-- get numeric ID of entity key -->
+                                    <td><a href="/edit?id={{veic.key().id()}}">Editar</a></td>
+                                </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="9">Nenhum registro encontrado</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </form>
+            <p>
+                <strong>Para Criar, Editar ou Excluir um registro, você precisa estar logado com seu Google ID.</strong>
+            </p>
+{% endblock %}
