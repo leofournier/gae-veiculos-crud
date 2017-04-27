@@ -6,21 +6,27 @@ handlers:
 - url: /favicon\.ico
   static_files: favicon.ico
   upload: favicon\.ico
+  secure: always
 
 - url: /img
   static_dir: template/img
+  secure: always
 
 - url: /css
   static_dir: template/css
+  secure: always
 
 - url: /js
   static_dir: template/js
+  secure: always
 
 - url: /fonts
   static_dir: template/fonts
+  secure: always
 
 - url: .*
   script: main.app
+  secure: always
 
 libraries:
 - name: webapp2
