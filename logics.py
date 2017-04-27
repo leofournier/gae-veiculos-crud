@@ -1,5 +1,4 @@
 from models import VeiculoModel, CadastroModel
-import datetime
 from google.appengine.ext import db
 from google.appengine.api import users
 
